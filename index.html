@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Brew Café - Dewas</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+background: linear-gradient(135deg,#020617,#0f172a);
+color:white;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+}
+
+nav a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+}
+
+.hero{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:60px;
+background:linear-gradient(to right,#f59e0b,#fbbf24);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+section{
+padding:60px 20px;
+text-align:center;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:15px;
+transition:0.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+}
+
+#popup{
+display:none;
+position:fixed;
+top:20%;
+left:50%;
+transform:translateX(-50%);
+background:white;
+color:black;
+padding:20px;
+border-radius:10px;
+width:300px;
+text-align:center;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+}
+
+button{
+background:#f59e0b;
+border:none;
+padding:10px;
+border-radius:20px;
+cursor:pointer;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+<h2>Urban Brew ☕</h2>
+<div>
+<a href="#">Home</a>
+<a href="#menu">Menu</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<h1>Urban Brew Café</h1>
+<p>Premium Coffee Experience in Dewas</p>
+</div>
+</div>
+
+<section id="menu">
+<h2>☕ Our Menu</h2>
+
+<div class="menu">
+
+<div class="card" onclick="showItem('coffee')">
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+<h3>Cappuccino</h3>
+</div>
+
+<div class="card" onclick="showItem('coldcoffee')">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+<h3>Cold Coffee</h3>
+</div>
+
+<div class="card" onclick="showItem('cake')">
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+<h3>Chocolate Cake</h3>
+</div>
+
+<div class="card" onclick="showItem('croissant')">
+<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff">
+<h3>Croissant</h3>
+</div>
+
+</div>
+
+<div id="popup">
+<h3 id="itemName"></h3>
+<p id="itemOptions"></p>
+<button onclick="closePopup()">Close</button>
+</div>
+
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+<p>Urban Brew Café brings modern coffee culture to Dewas with premium taste and cozy ambience.</p>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+
+<input placeholder="Your Name">
+<input placeholder="Your Email">
+<textarea placeholder="Message"></textarea>
+<button>Send</button>
+
+<br><br>
+
+<iframe src="https://maps.google.com/maps?q=dewas&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%" height="300"></iframe>
+
+<br><br>
+
+<a href="https://wa.me/919999999999" target="_blank">
+<button>Chat on WhatsApp</button>
+</a>
+
+</section>
+
+<footer>
+<p>© 2026 Urban Brew Café | Dewas</p>
+</footer>
+
+<script>
+function showItem(item){
+let name="";
+let options="";
+
+if(item==="coffee"){
+name="Cappuccino";
+options="Small - ₹100<br>Medium - ₹120<br>Large - ₹150";
+}
+if(item==="coldcoffee"){
+name="Cold Coffee";
+options="Small - ₹130<br>Medium - ₹150<br>Large - ₹180";
+}
+if(item==="cake"){
+name="Chocolate Cake";
+options="Slice - ₹100<br>Half - ₹200<br>Full - ₹350";
+}
+if(item==="croissant"){
+name="Croissant";
+options="Plain - ₹80<br>Cheese - ₹100<br>Chocolate - ₹120";
+}
+
+document.getElementById("itemName").innerHTML=name;
+document.getElementById("itemOptions").innerHTML=options;
+document.getElementById("popup").style.display="block";
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>
